@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ::: {.content-visible when-profile="english"}
 
-The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use the [palochka sign](https://en.wikipedia.org/wiki/Palochka), however in the colomn's search it is possible to use latin capital I or digit 1. Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format.
+The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use the [palochka sign](https://en.wikipedia.org/wiki/Palochka), however it is possible to use latin capital I or digit 1 in the colomn's search. Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format.
 
 Please refer to the dictionary as follows:
 

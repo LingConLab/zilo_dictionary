@@ -40,7 +40,7 @@ article_citation <- BibEntry(bibtype = 'misc',
  year='2024',
  publisher='Linguistic Convergence Laboratory, HSE University',
  address='Moscow',
- url='https://agricolamz.github.io/zilo_dictionary',
+ url='https://lingconlab.github.io/zilo_dictionary/',
  doi='10.5281/zenodo.7803955')
 ```
 

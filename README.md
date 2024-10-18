@@ -6,5 +6,5 @@ The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence La
 
 Please cite as following:
 
-Moroz, G. (2024). Online Dictionary of Zilo Andi (v1.0.0). Moscow. DOI: 10.5281/zenodo.13952695. https://lingconlab.github.io/zilo_dictionary/.
+Moroz, G. (2024). Online Dictionary of Zilo Andi (v1.0.1). Moscow. DOI: 10.5281/zenodo.13952695. https://lingconlab.github.io/zilo_dictionary/.
 

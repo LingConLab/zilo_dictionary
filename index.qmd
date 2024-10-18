@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ::: {.content-visible when-profile="english"}
 
-The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use capital latin I instead of the [palochka sign](https://en.wikipedia.org/wiki/Palochka). Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format.
+The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use the [palochka sign](https://en.wikipedia.org/wiki/Palochka), however in the colomn's search it is possible to use latin capital I or digit 1. Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format.
 
 Please refer to the dictionary as follows:
 
@@ -48,7 +48,7 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 
 ::: {.content-visible when-profile="russian"}
 
-Словарь был составлен в 2022--2024 Г. А. Морозом (Международная лаборатория языковой конвергенции, НИУ ВШЭ). Сайт сверстан Г. А. Морозом. По всем вопросам можно написать [по почте](mailto:agricolamz@gmail.com) или оставить замечания на [странице GitHub](https://github.com/agricolamz/zilo_dictionary/issues/new). Обратите внимание, что в качестве [палочки](https://ru.wikipedia.org/wiki/Палочка_(кириллица))) я использую заглавную английскую I. Данные доступны  [к скачиванию](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) в формате `.csv`.
+Словарь был составлен в 2022--2024 Г. А. Морозом (Международная лаборатория языковой конвергенции, НИУ ВШЭ). Сайт сверстан Г. А. Морозом. По всем вопросам можно написать [по почте](mailto:agricolamz@gmail.com) или оставить замечания на [странице GitHub](https://github.com/agricolamz/zilo_dictionary/issues/new). Обратите внимание, что я использую [палочку](https://ru.wikipedia.org/wiki/Палочка_(кириллица))), но в поиске конкретных колонок можно использовать заглавную английскую I или цифру 1. Данные доступны  [к скачиванию](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) в формате `.csv`.
 
 Словарь следует цитировать следующим образом:
 
@@ -95,12 +95,14 @@ readxl::read_xlsx("andic_all_merged.xlsx") |>
   select(meaning_ru, base, gender, abs.pl, obl.sg, obl.pl, loc, GA, aor_perf, imp) |> 
   rename(russian = meaning_ru,
          zilo = base) |> 
-  mutate(across(where(is.character), ~ str_replace(.x, "1", "I"))) |> 
+  mutate(across(everything(), ~ str_replace_all(.x, "[1I]", "ӏ"))) |> 
   write_csv("data/data.csv", na = "")
 
 read_csv("data/data.csv", show_col_types = FALSE) |> 
   mutate_all(function(i){ifelse(is.na(i), "", i)}) |>
   mutate(gender = factor(gender)) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
-            options = list(pageLength = 20, dom = 'ftop'))
+            options = list(pageLength = 20, 
+                           dom = 'ftop',
+                           initComplete = JS(readLines("character_map.js"))))
 ```

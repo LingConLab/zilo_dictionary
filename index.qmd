@@ -102,6 +102,7 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 #| warning: false
 
 df |> 
+  arrange(zilo) |> 
   mutate_all(function(i){ifelse(is.na(i), "", i)}) |>
   mutate(gender = factor(gender)) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,

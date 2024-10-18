@@ -41,7 +41,7 @@ article_citation <- BibEntry(bibtype = 'misc',
  publisher='Linguistic Convergence Laboratory, HSE University',
  address='Moscow',
  url='https://lingconlab.github.io/zilo_dictionary/',
- doi='10.5281/zenodo.7803955')
+ doi='10.5281/zenodo.13952695')
 ```
 
 ::: {.panel-tabset}
@@ -97,6 +97,8 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 :::
 
 :::
+
+[![](https://zenodo.org/badge/DOI/10.5281/zenodo.13952696.svg)](https://doi.org/10.5281/zenodo.13952695)
 
 ```{r}
 #| warning: false

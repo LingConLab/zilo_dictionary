@@ -1,0 +1,103 @@
+---
+editor: source
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+::: {.content-visible when-profile="english"}
+
+The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use capital latin I instead of the [palochka sign](https://en.wikipedia.org/wiki/Palochka).
+
+Please refer to the dictionary as follows:
+
+```{r}
+library(RefManageR)
+BibOptions(check.entries = FALSE, style = 'text', bib.style = 'authoryear')
+article_citation <- BibEntry(bibtype = 'misc', 
+ key='moroz2024',
+ title='Online Dictionary of Zilo Andi (v1.0.0)',
+ author='G. Moroz',
+ year='2024',
+ publisher='Linguistic Convergence Laboratory, HSE University',
+ address='Moscow',
+ url='https://agricolamz.github.io/zilo_dictionary',
+ doi='10.5281/zenodo.7803955')
+```
+
+::: {.panel-tabset}
+
+### Plain text
+```{r, results = 'asis'}
+print(article_citation, .opts = list(style = 'text'))
+```
+
+### BibTeX
+
+```{r}
+print(article_citation, .opts = list(style = 'Bibtex'))
+```
+
+:::
+
+:::
+
+::: {.content-visible when-profile="russian"}
+
+Словарь был составлен в 2022--2024 Г. А. Морозом (Международная лаборатория языковой конвергенции, НИУ ВШЭ). Сайт сверстан Г. А. Морозом. По всем вопросам можно написать [по почте](mailto:agricolamz@gmail.com) или оставить замечания на [странице GitHub](https://github.com/agricolamz/zilo_dictionary/issues/new). Обратите внимание, что в качестве [палочки](https://ru.wikipedia.org/wiki/Палочка_(кириллица))) я использую заглавную английскую I.
+
+Словарь следует цитировать следующим образом:
+
+```{r}
+library(RefManageR)
+BibOptions(check.entries = FALSE, style = 'text', bib.style = 'authoryear')
+article_citation <- BibEntry(bibtype = 'misc', 
+ key='moroz2024',
+ title='Электронный словарь зиловского андийского (v1.0.0)',
+ author='Г. А. Мороз',
+ year='2024',
+ publisher='Международная лаборатория языковой конвергенции, НИУ ВШЭ',
+ address='Москва',
+ url='https://agricolamz.github.io/zilo_dictionary',
+ doi='10.5281/zenodo.7803955')
+```
+
+::: {.panel-tabset}
+
+### Plain text
+```{r, results = 'asis'}
+print(article_citation, .opts = list(style = 'text'))
+```
+
+### BibTeX
+
+```{r}
+print(article_citation, .opts = list(style = 'Bibtex'))
+```
+
+:::
+
+:::
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(DT)
+
+readxl::read_xlsx("andic_all_merged.xlsx") |> 
+  filter(!is.na(base)) |> 
+  select(meaning_ru, base, gender, abs.pl, obl.sg, obl.pl, loc, GA, aor_perf, imp) |> 
+  mutate(across(where(is.character), ~ str_replace(.x, "1", "I"))) |> 
+  write_csv("data/data.csv", na = "")
+
+read_csv("data/data.csv", show_col_types = FALSE) |> 
+  mutate_all(function(i){ifelse(is.na(i), "", i)}) |>  
+  datatable(filter = 'top', escape = FALSE, rownames = FALSE,
+            options = list(pageLength = 20, dom = 'top'))
+```

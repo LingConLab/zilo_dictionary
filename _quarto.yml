@@ -1,0 +1,11 @@
+project:
+  type: website
+
+profile:
+  default: english
+  group: [english, russian]
+
+format: 
+  html:
+    page-layout: full
+    theme: flatly

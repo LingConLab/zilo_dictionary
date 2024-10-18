@@ -1,0 +1,12 @@
+project:
+  title: "Электронный словарь зиловского андийского"
+  output-dir: ./docs/ru
+
+website:
+  search: false
+  navbar:
+    right:
+      - href: ../index.html
+        text: English
+
+lang: ru

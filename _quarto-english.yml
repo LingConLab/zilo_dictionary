@@ -1,0 +1,12 @@
+project:
+  title: "Online Dictionary of Zilo Andi"
+  output-dir: ./docs
+
+website:
+  search: false
+  navbar:
+    right:
+      - href: ./ru/index.html
+        text: Русский
+
+lang: en

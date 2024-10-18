@@ -21,7 +21,7 @@ const characterMaps = [
 
 const replaceSpecificCharacters = function (s) {
   for (let i = 0; i < characterMaps.length; i++) {
-    s = s.replace(characterMaps[i].base, ConvertToCharFromUnicode(characterMaps[i]));
+    s = s.replace(new RegExp(characterMaps[i].base, 'g'), ConvertToCharFromUnicode(characterMaps[i]));
   }
   return s;
 };

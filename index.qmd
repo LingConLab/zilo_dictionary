@@ -6,12 +6,25 @@ editor_options:
 
 ```{r}
 #| include: false
-knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(DT)
+
+readxl::read_xlsx("andic_all_merged.xlsx") |> 
+  filter(!is.na(base)) |> 
+  select(meaning_ru, base, gender, abs.pl, obl.sg, obl.pl, loc, GA, aor_perf, imp) |> 
+  rename(russian = meaning_ru,
+         zilo = base) |> 
+  mutate(across(everything(), ~ str_replace_all(.x, "[1I]", "ӏ"))) |> 
+  write_csv("data/data.csv", na = "")
+
+df <- read_csv("data/data.csv", show_col_types = FALSE)
 ```
+
 
 ::: {.content-visible when-profile="english"}
 
-The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use the [palochka sign](https://en.wikipedia.org/wiki/Palochka), however it is possible to use latin capital I or digit 1 in the colomn's search. Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format.
+The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use the [palochka sign](https://en.wikipedia.org/wiki/Palochka), however it is possible to use latin capital I or digit 1 in the colomn's search. Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format. Dictionary consists of `r nrow(df)` lemmata.
 
 Please refer to the dictionary as follows:
 
@@ -48,7 +61,7 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 
 ::: {.content-visible when-profile="russian"}
 
-Словарь был составлен в 2022--2024 Г. А. Морозом (Международная лаборатория языковой конвергенции, НИУ ВШЭ). Сайт сверстан Г. А. Морозом. По всем вопросам можно написать [по почте](mailto:agricolamz@gmail.com) или оставить замечания на [странице GitHub](https://github.com/agricolamz/zilo_dictionary/issues/new). Обратите внимание, что я использую [палочку](https://ru.wikipedia.org/wiki/Палочка_(кириллица))), но в поиске конкретных колонок можно использовать заглавную английскую I или цифру 1. Данные доступны  [к скачиванию](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) в формате `.csv`.
+Словарь был составлен в 2022--2024 Г. А. Морозом (Международная лаборатория языковой конвергенции, НИУ ВШЭ). Сайт сверстан Г. А. Морозом. По всем вопросам можно написать [по почте](mailto:agricolamz@gmail.com) или оставить замечания на [странице GitHub](https://github.com/agricolamz/zilo_dictionary/issues/new). Обратите внимание, что я использую [палочку](https://ru.wikipedia.org/wiki/Палочка_(кириллица))), но в поиске конкретных колонок можно использовать заглавную английскую I или цифру 1. Данные доступны  [к скачиванию](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) в формате `.csv`. В словаре содержится `r nrow(df)` лемм.
 
 Словарь следует цитировать следующим образом:
 
@@ -87,18 +100,7 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 #| echo: false
 #| warning: false
 
-library(tidyverse)
-library(DT)
-
-readxl::read_xlsx("andic_all_merged.xlsx") |> 
-  filter(!is.na(base)) |> 
-  select(meaning_ru, base, gender, abs.pl, obl.sg, obl.pl, loc, GA, aor_perf, imp) |> 
-  rename(russian = meaning_ru,
-         zilo = base) |> 
-  mutate(across(everything(), ~ str_replace_all(.x, "[1I]", "ӏ"))) |> 
-  write_csv("data/data.csv", na = "")
-
-read_csv("data/data.csv", show_col_types = FALSE) |> 
+df |> 
   mutate_all(function(i){ifelse(is.na(i), "", i)}) |>
   mutate(gender = factor(gender)) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
@@ -106,3 +108,4 @@ read_csv("data/data.csv", show_col_types = FALSE) |>
                            dom = 'ftop',
                            initComplete = JS(readLines("character_map.js"))))
 ```
+

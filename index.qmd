@@ -21,6 +21,19 @@ readxl::read_xlsx("andic_all_merged.xlsx") |>
   write_csv("data/data.csv", na = "")
 
 df <- read_csv("data/data.csv", show_col_types = FALSE)
+
+# update version everywhere
+version <- "1.0.1"
+
+read_lines("CITATION.cff") |> 
+  str_replace("version: v\\d{1,}\\.\\d{1,}\\.\\d{1,}",
+              str_glue("version: v{version}")) |> 
+  write_lines("CITATION.cff")
+
+read_lines("README.md") |> 
+  str_replace("\\(v\\d{1,}\\.\\d{1,}\\.\\d{1,}\\)",
+              str_glue("(v{version})")) |> 
+  write_lines("README.md")
 ```
 
 
@@ -35,7 +48,7 @@ library(RefManageR)
 BibOptions(check.entries = FALSE, style = 'text', bib.style = 'authoryear')
 article_citation <- BibEntry(bibtype = 'misc', 
  key='moroz2024',
- title='Online Dictionary of Zilo Andi (v1.0.0)',
+ title=str_glue('Online Dictionary of Zilo Andi (v{version})'),
  author='G. Moroz',
  year='2024',
  publisher='Linguistic Convergence Laboratory, HSE University',
@@ -47,6 +60,7 @@ article_citation <- BibEntry(bibtype = 'misc',
 ::: {.panel-tabset}
 
 ### Plain text
+
 ```{r, results = 'asis'}
 print(article_citation, .opts = list(style = 'text'))
 ```
@@ -72,7 +86,7 @@ library(RefManageR)
 BibOptions(check.entries = FALSE, style = 'text', bib.style = 'authoryear')
 article_citation <- BibEntry(bibtype = 'misc', 
  key='moroz2024',
- title='Электронный словарь зиловского андийского (v1.0.1)',
+ title=str_glue('Электронный словарь зиловского андийского (v{version})'),
  author='Г. А. Мороз',
  year='2024',
  publisher='Международная лаборатория языковой конвергенции, НИУ ВШЭ',
@@ -84,6 +98,7 @@ article_citation <- BibEntry(bibtype = 'misc',
 ::: {.panel-tabset}
 
 ### Plain text
+
 ```{r, results = 'asis'}
 print(article_citation, .opts = list(style = 'text'))
 ```

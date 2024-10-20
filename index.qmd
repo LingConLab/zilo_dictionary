@@ -12,7 +12,7 @@ execute:
 library(tidyverse)
 library(DT)
 
-readxl::read_xlsx("andic_all_merged.xlsx") |> 
+readxl::read_xlsx("backup/andic_all_merged.xlsx") |> 
   filter(!is.na(base)) |> 
   select(meaning_ru, base, gender, abs.pl, obl.sg, obl.pl, loc, GA, aor_perf, imp) |> 
   rename(russian = meaning_ru,

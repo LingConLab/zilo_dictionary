@@ -4,6 +4,7 @@ project:
 
 website:
   search: false
+  favicon: favicon.png
   navbar:
     right:
       - href: ../index.html

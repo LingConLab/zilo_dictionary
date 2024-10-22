@@ -9,6 +9,8 @@ execute:
 ```{r}
 #| include: false
 
+version <- "1.0.2"
+
 library(tidyverse)
 library(DT)
 
@@ -28,7 +30,6 @@ lemmata_form <- case_when(nrow(df) %% 10 == 1 ~ "лемма",
                           TRUE ~ "лемм")
 
 # update version everywhere
-version <- "1.0.1"
 
 read_lines("CITATION.cff") |> 
   str_replace("version: v\\d{1,}\\.\\d{1,}\\.\\d{1,}",

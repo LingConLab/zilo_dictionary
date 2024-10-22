@@ -10,7 +10,7 @@ identifiers:
     type: doi
     value: 10.5281/zenodo.13952695
 title: Online Dictionary of Zilo Andi
-version: v1.0.1
+version: v1.0.2
 date-released: 2024-10-18
 repository-code: "https://github.com/LingConLab/zilo_dictionary"
 license: CC-BY-4.0

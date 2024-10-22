@@ -17,7 +17,8 @@ readxl::read_xlsx("backup/andic_all_merged.xlsx") |>
   select(meaning_ru, base, gender, abs.pl, obl.sg, obl.pl, loc, GA, aor_perf, imp) |> 
   rename(russian = meaning_ru,
          zilo = base) |> 
-  mutate(across(everything(), ~ str_replace_all(.x, "[1I]", "ӏ"))) |> 
+  mutate(across(everything(), ~ str_replace_all(.x, "[1I]", "ӏ"))) |>
+  distinct() |> 
   write_csv("data/data.csv", na = "")
 
 df <- read_csv("data/data.csv", show_col_types = FALSE)

@@ -53,10 +53,10 @@ Please refer to the dictionary as follows:
 library(RefManageR)
 BibOptions(check.entries = FALSE, style = 'text', bib.style = 'authoryear')
 article_citation <- BibEntry(bibtype = 'misc', 
- key='moroz2024',
+ key='moroz2026',
  title=str_glue('Online Dictionary of Zilo Andi (v{version})'),
  author='G. Moroz',
- year='2024',
+ year='2026',
  publisher='Linguistic Convergence Laboratory, HSE University',
  address='Moscow',
  url='https://lingconlab.github.io/zilo_dictionary/',
@@ -83,7 +83,7 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 
 ::: {.content-visible when-profile="russian"}
 
-Словарь был составлен в 2022--2024 Г. А. Морозом (Международная лаборатория языковой конвергенции, НИУ ВШЭ). Сайт сверстан Г. А. Морозом. По всем вопросам можно написать [по почте](mailto:agricolamz@gmail.com) или оставить замечания на [странице GitHub](https://github.com/agricolamz/zilo_dictionary/issues/new). Обратите внимание, что я использую [палочку](https://ru.wikipedia.org/wiki/Палочка_(кириллица))), но в поиске конкретных колонок можно использовать заглавную английскую I или цифру 1. Данные доступны  [к скачиванию](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) в формате `.csv`. В словаре содержится `r nrow(df)` `r lemmata_form`.
+Словарь был составлен в 2022--2026 Г. А. Морозом (Международная лаборатория языковой конвергенции, НИУ ВШЭ). Сайт сверстан Г. А. Морозом. По всем вопросам можно написать [по почте](mailto:agricolamz@gmail.com) или оставить замечания на [странице GitHub](https://github.com/agricolamz/zilo_dictionary/issues/new). Обратите внимание, что я использую [палочку](https://ru.wikipedia.org/wiki/Палочка_(кириллица))), но в поиске конкретных колонок можно использовать заглавную английскую I или цифру 1. Данные доступны  [к скачиванию](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) в формате `.csv`. В словаре содержится `r nrow(df)` `r lemmata_form`.
 
 Словарь следует цитировать следующим образом:
 
@@ -91,10 +91,10 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 library(RefManageR)
 BibOptions(check.entries = FALSE, style = 'text', bib.style = 'authoryear')
 article_citation <- BibEntry(bibtype = 'misc', 
- key='moroz2024',
+ key='moroz2026',
  title=str_glue('Электронный словарь зиловского андийского (v{version})'),
  author='Г. А. Мороз',
- year='2024',
+ year='2026',
  publisher='Международная лаборатория языковой конвергенции, НИУ ВШЭ',
  address='Москва',
  url='https://agricolamz.github.io/zilo_dictionary',

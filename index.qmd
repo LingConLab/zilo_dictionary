@@ -131,6 +131,6 @@ df |>
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
             options = list(pageLength = 20, 
                            dom = 'ftop',
-                           initComplete = JS(readLines("character_map.js"))))
+                           initComplete = JS(readLines("code.js"))))
 ```
 

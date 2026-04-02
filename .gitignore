@@ -2,3 +2,5 @@ andic_all_merged.xlsx
 .~lock.*
 /.quarto/
 backup/
+
+**/*.quarto_ipynb

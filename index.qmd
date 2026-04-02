@@ -9,7 +9,7 @@ execute:
 ```{r}
 #| include: false
 
-version <- "1.0.2"
+version <- "1.0.3"
 
 library(tidyverse)
 library(DT)
@@ -45,7 +45,7 @@ read_lines("README.md") |>
 
 ::: {.content-visible when-profile="english"}
 
-The dictionary was compiled in 2022--2024 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use the [palochka sign](https://en.wikipedia.org/wiki/Palochka), however it is possible to use latin capital I or digit 1 in the colomn's search. Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format. Dictionary consists of `r nrow(df)` lemmata.
+The dictionary was compiled in 2022--2026 by G. Moroz (Linguistic Convergence Laboratory, HSE University). The online version was prepared by G. Moroz. You can always contact me via [email](mailto:agricolamz@gmail.com) or leave an issue on the [GitHub page](https://github.com/agricolamz/zilo_dictionary/issues/new). Please note that I use the [palochka sign](https://en.wikipedia.org/wiki/Palochka), however it is possible to use latin capital I or digit 1 in the colomn's search. Data are [available for download](https://raw.githubusercontent.com/LingConLab/zilo_dictionary/refs/heads/main/data/data.csv) in the `.csv` format. Dictionary consists of `r nrow(df)` lemmata.
 
 Please refer to the dictionary as follows:
 

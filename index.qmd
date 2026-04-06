@@ -121,6 +121,50 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 
 [![](https://zenodo.org/badge/DOI/10.5281/zenodo.13952696.svg)](https://doi.org/10.5281/zenodo.13952695)
 
+::: {.panel-tabset}
+
+### Short version
+
+```{r}
+#| warning: false
+
+df |> 
+  arrange(zilo) |> 
+  mutate_all(function(i){ifelse(is.na(i), "", i)}) |>
+  mutate(more = '&oplus;') |> 
+  mutate(gender = if_else(gender == "", "", str_c("gender: ", gender)),
+         abs.pl = if_else(abs.pl == "", "", str_c("abs.pl: ", abs.pl)),
+         obl.sg = if_else(obl.sg == "", "", str_c("obl.sg: ", obl.sg)),
+         obl.pl = if_else(obl.pl == "", "", str_c("obl.pl: ", obl.pl)),
+         loc = if_else(loc == "", "", str_c("locative: ", loc)),
+         GA = if_else(GA == "", "", str_c("gender forms: ", GA)),
+         aor_perf = if_else(aor_perf == "", "", str_c("aor_perf: ", aor_perf)),
+         imp = if_else(imp == "", "", str_c("imp: ", imp)),
+         more = '&oplus;',
+         tooltip = str_c(gender, "<br>",
+                         abs.pl, "<br>",
+                         obl.sg, "<br>",
+                         obl.pl, "<br>",
+                         loc, "<br>",
+                         GA, "<br>",
+                         aor_perf, "<br>",
+                         imp, "<br>"),
+         tooltip = str_replace_all(tooltip, "(<br>){1,}", "<br>"),
+         tooltip = str_remove_all(tooltip, "^<br>")) |>
+  select(more, tooltip, zilo, russian) |> 
+  datatable(filter = 'top', escape = FALSE, rownames = FALSE,
+            colnames = c("", "зиловский", "русский"),
+            callback = JS(readLines("plus.js")),
+            options = list(pageLength = 20, 
+                           dom = 'ftop',
+                           initComplete = JS(readLines("code.js")),
+                           columnDefs = list(
+                             list(visible = FALSE, targets = c(1)),
+                             list(orderable = FALSE, className = 'details-control', targets = 0))))
+```
+
+### All fields search
+
 ```{r}
 #| warning: false
 
@@ -134,3 +178,4 @@ df |>
                            initComplete = JS(readLines("code.js"))))
 ```
 
+:::

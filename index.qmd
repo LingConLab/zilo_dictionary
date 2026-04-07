@@ -91,8 +91,9 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 df |> 
   arrange(zilo) |> 
   select(zilo, russian) |> 
+  rename(Zilo = zilo,
+         Russian = russian) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
-            colnames = c("Zilo", "Russian"),
             options = list(pageLength = 20, 
                            dom = 'top',
                            initComplete = JS(readLines("code.js"))))
@@ -107,6 +108,8 @@ df |>
   arrange(zilo) |> 
   mutate_all(function(i){ifelse(is.na(i), "", i)}) |>
   mutate(gender = factor(gender)) |> 
+  rename(Zilo = zilo,
+         Russian = russian) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
             options = list(pageLength = 20, 
                            dom = 'ftop',

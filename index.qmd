@@ -105,7 +105,7 @@ df |>
 #| warning: false
 
 df |> 
-  select(-pos, -transducer_entry, -transducer_lexicon_group) |> 
+  select(-transducer_entry, -transducer_lexicon_group) |> 
   arrange(zilo) |> 
   mutate_all(function(i){ifelse(is.na(i), "", i)}) |>
   mutate(gender = factor(gender)) |> 
@@ -182,12 +182,12 @@ df |>
 #| warning: false
 
 df |> 
-  select(-pos, -transducer_entry, -transducer_lexicon_group) |> 
+  select(-transducer_entry, -transducer_lexicon_group) |> 
   arrange(zilo) |> 
   mutate_all(function(i){ifelse(is.na(i), "", i)}) |>
   mutate(gender = factor(gender)) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
-            colnames = c("русский", "зиловский", "класс", "мн. ч.", "косв. осн. ед. ч.", "косв. осн. мн. ч.", "местн. п.", "кл. формы", "прош. вр.", "повел."),
+            colnames = c("русский", "зиловский", "класс", "мн. ч.", "косв. осн. ед. ч.", "косв. осн. мн. ч.", "местн. п.", "кл. формы", "прош. вр.", "повел.", "часть речи"),
             options = list(pageLength = 20, 
                            dom = 'ftop',
                            initComplete = JS(readLines("code.js"))))

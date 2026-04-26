@@ -90,7 +90,7 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 
 df |> 
   arrange(zilo) |> 
-  select(zilo, russian) |> 
+  distinct(zilo, russian) |> 
   rename(Zilo = zilo,
          Russian = russian) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
@@ -169,7 +169,7 @@ print(article_citation, .opts = list(style = 'Bibtex'))
 
 df |> 
   arrange(zilo) |> 
-  select(zilo, russian) |> 
+  distinct(zilo, russian) |> 
   datatable(filter = 'top', escape = FALSE, rownames = FALSE,
             colnames = c("зиловский", "русский"),
             options = list(pageLength = 20, 
